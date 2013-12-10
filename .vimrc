@@ -12,6 +12,11 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+
+" "I never use semicolon in vim for ANYTHING."
+" make it behave like the much more useful colon instead:
+nnoremap ; :
+
 set number                         " add line numbers
 
 set directory=$HOME/.vim/tmp//,.   " save vim's tempfiles to home directory
