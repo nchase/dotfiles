@@ -97,5 +97,3 @@ let g:airline_powerline_fonts = 1
       normal zR                          " unfold all folds
   endfunction
 
-filetype plugin indent on
-syntax on
