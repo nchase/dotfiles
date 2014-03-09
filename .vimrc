@@ -11,6 +11,8 @@ syntax enable
 
 set background=dark
 colorscheme solarized
+" "open NERDTree in the same pane that file editing is happening in":
+let NERDTreeHijackNetrw=1
 
 
 " "I never use semicolon in vim for ANYTHING."
