@@ -27,5 +27,4 @@ emoji(){
   cat "$HOME/.emoji"
 }
 
-#PROMPT='$(host_name)$(git_custom_status)%{$fg[cyan]%}[%~% ]%{$reset_color%}%B$%b '
 PROMPT='$(host_name)$(git_custom_status)%{$fg[cyan]%}[%~% ]%{$reset_color%}$(emoji)  '
