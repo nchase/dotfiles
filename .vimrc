@@ -11,6 +11,7 @@ syntax enable
 
 set background=dark
 colorscheme solarized
+set ruler                          " always show ruler
 " "open NERDTree in the same pane that file editing is happening in":
 let NERDTreeHijackNetrw=1
 
@@ -95,7 +96,6 @@ let g:airline_powerline_fonts = 1
       set fuoptions=background:#00f5f6f6 " macvim specific setting for editor's background color
       set guioptions-=r                  " remove right scrollbar
       set laststatus=0                   " don't show status line
-      set noruler                        " don't show ruler
       set fullscreen                     " go to fullscreen editing mode
       set linebreak                      " break the lines on words
       set nolist                         " don't show unprintable characters (kills linebreak)
