@@ -104,3 +104,6 @@ let g:airline_powerline_fonts = 1
       normal zR                          " unfold all folds
   endfunction
 
+if filereadable(glob('./.vimrc.local'))
+  so ./.vimrc.local
+endif
