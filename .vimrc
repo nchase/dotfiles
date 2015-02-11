@@ -61,6 +61,7 @@ nnoremap <CR> :noh<CR><CR>
 
 " never display node_modules:
 set wildignore+=*/**/node_modules
+set wildignore+=*.class
 
 " alter cursor shape for different modes in terminal vim (may not work in
 " Terminal.app)
