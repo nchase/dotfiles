@@ -9,7 +9,7 @@ call pathogen#infect()
 " general settings
 syntax enable
 
-set background=dark
+set background=light
 colorscheme solarized
 set ruler                          " always show ruler
 " "open NERDTree in the same pane that file editing is happening in":
