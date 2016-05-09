@@ -2,7 +2,7 @@ config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
-bind r:ctrl;alt;cmd relaunch
+#bind r:ctrl;alt;cmd relaunch
 
 bind up:ctrl;cmd nudge +0 -1%
 bind down:ctrl;cmd nudge +0 +1%

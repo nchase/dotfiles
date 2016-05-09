@@ -9,16 +9,10 @@ call pathogen#infect()
 " general settings
 syntax enable
 
-set background=light
+set background=dark
 colorscheme solarized
 set ruler                          " always show ruler
-" "open NERDTree in the same pane that file editing is happening in":
-let NERDTreeHijackNetrw=1
 
-
-" "I never use semicolon in vim for ANYTHING."
-" make it behave like the much more useful colon instead:
-nnoremap ; :
 
 set number                         " add line numbers
 
@@ -29,15 +23,6 @@ set ignorecase                     " ignore case on search
 set autoindent                     " add indentation
 set listchars=tab:→\ ,trail:•      " set trailing space and tab characters
 set list                           " actually show listchars.
-
-  " key mappings
-    :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR> " F5 = remove trailing spaces
-    :let g:surround_33 = "<!-- \r -->"  " hotkey to surround text with html comments
-
-    " find-and-replace dangerous special characters:
-    ":nnoremap <F4> :%s/‘\<Bar>’\<Bar>”\<Bar>“\<Bar>†\<Bar>‡\<Bar>™\<Bar>©\<Bar>®\<Bar>•\<Bar>¹\<Bar>²\<Bar>³\<Bar>–\<Bar>–\<Bar>—\<Bar>…//gc<CR>
-    :nnoremap <F4> :%s/‘\<Bar>’\<Bar>”\<Bar>“\<Bar>†\<Bar>‡\<Bar>™\<Bar>©\<Bar>®\<Bar>•\<Bar>¹\<Bar>²\<Bar>³\<Bar>–\<Bar>–\<Bar>—\<Bar>…//gc<CR>
-    " on each line, add the character, followed by an escaped <Bar>
 
   " variable formatting stuff
     set tabstop=2                      " tab = 2 spaces
@@ -59,10 +44,11 @@ set incsearch
 set hlsearch
 nnoremap <CR> :noh<CR><CR>
 
-" never display node_modules:
+" never display, e.g., any node_modules directory:
 set wildignore+=*/**/node_modules
 set wildignore+=*.class
 set wildignore+=*/target/*
+set wildignore+=*.ico,*.jpg,*.gif,*.png
 
 " alter cursor shape for different modes in terminal vim (may not work in
 " Terminal.app)
@@ -75,15 +61,18 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
-"set clipboard=unnamed
+set backspace=indent,eol,start
 
 " manually change to working directory
 map <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " airline stuff:
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+set laststatus=2
+
+" ctrlp:
+let g:ctrlp_match_window = 'order:ttb'
 
 " turn-on distraction free writing mode for markdown files
   if has("gui_running")
@@ -105,5 +94,12 @@ let g:airline_powerline_fonts = 1
   endfunction
 
 if filereadable(glob('./.vimrc.local'))
-  so ./.vimrc.local
+  source ./.vimrc.local
 endif
+filetype plugin indent on
+syntax on
+
+" handle `:W` as `:w` and `:E` as `:e`:
+cnoreabbrev W w
+cnoreabbrev E e
+cnoreabbrev Qa qa
