@@ -12,7 +12,7 @@ syntax enable
 set background=dark
 colorscheme solarized
 set ruler                          " always show ruler
-
+set textwidth=80
 
 set number                         " add line numbers
 
@@ -103,3 +103,8 @@ syntax on
 cnoreabbrev W w
 cnoreabbrev E e
 cnoreabbrev Qa qa
+
+
+set conceallevel=1
+let g:javascript_enable_domhtmlcss = 1
+"let g:javascript_conceal_function  = "ƒ"
