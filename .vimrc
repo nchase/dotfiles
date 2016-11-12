@@ -116,3 +116,4 @@ set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline
 set conceallevel=1
 let g:javascript_enable_domhtmlcss = 1
 "let g:javascript_conceal_function  = "ƒ"
+set clipboard=unnamed
