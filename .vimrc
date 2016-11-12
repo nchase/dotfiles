@@ -78,6 +78,7 @@ set laststatus=2
 
 " ctrlp:
 let g:ctrlp_match_window = 'order:ttb'
+let g:ctrlp_switch_buffer = 't'
 
 " turn-on distraction free writing mode for markdown files
   if has("gui_running")
