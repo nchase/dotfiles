@@ -16,7 +16,11 @@ set textwidth=80
 
 set number                         " add line numbers
 
-set directory=$HOME/.vim/tmp//,.   " save vim's tempfiles to home directory
+" undo/swapfile stuff:
+set noswapfile
+set hidden
+set undofile
+set undodir=~/.vim/undodir
 
 filetype plugin indent on          " default to filetype-specific plugins and indentations
 set ignorecase                     " ignore case on search
