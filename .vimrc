@@ -117,3 +117,6 @@ set conceallevel=1
 let g:javascript_enable_domhtmlcss = 1
 "let g:javascript_conceal_function  = "ƒ"
 set clipboard=unnamed
+
+" default to tree liststyle for netrw:
+let g:netrw_liststyle=3
