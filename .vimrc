@@ -81,7 +81,7 @@ let g:ctrlp_match_window = 'order:ttb'
 
 " turn-on distraction free writing mode for markdown files
   if has("gui_running")
-    au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
+    " au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
   end
 
   function! DistractionFreeWriting()
