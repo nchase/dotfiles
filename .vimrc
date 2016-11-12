@@ -12,7 +12,6 @@ syntax enable
 set background=dark
 colorscheme solarized
 set ruler                          " always show ruler
-set textwidth=80
 
 set number                         " add line numbers
 
