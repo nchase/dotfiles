@@ -43,6 +43,8 @@ au BufNewFile,BufRead *.json set ft=javascript
 " puppet uses Ruby syntax highlighting:
 au BufNewFile,BufRead *.pp set filetype=ruby
 
+au BufNewFile,BufRead *.cshtml set filetype=html
+
 set incsearch
 set hlsearch
 nnoremap <CR> :noh<CR><CR>
