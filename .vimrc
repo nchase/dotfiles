@@ -109,6 +109,9 @@ cnoreabbrev W w
 cnoreabbrev E e
 cnoreabbrev Qa qa
 
+" set the font for MacVim:
+set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline
+
 
 set conceallevel=1
 let g:javascript_enable_domhtmlcss = 1
