@@ -83,6 +83,7 @@ let g:ctrlp_switch_buffer = 't'
 " turn-on distraction free writing mode for markdown files
   if has("gui_running")
     " au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
+    set background=light
   end
 
   function! DistractionFreeWriting()
@@ -121,3 +122,5 @@ set clipboard=unnamed
 
 " default to tree liststyle for netrw:
 let g:netrw_liststyle=3
+
+set nojoinspaces
