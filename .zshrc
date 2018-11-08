@@ -29,14 +29,6 @@ __git_files () {
 
 autoload compinit; compinit
 
-source $HOME/.environment-webs
 source $HOME/.environment-etc
 source $HOME/.environment-npm-completion
-source $HOME/.aliases-webs
 
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/noah/.gvm/bin/gvm-init.sh" ]] && source "/Users/noah/.gvm/bin/gvm-init.sh"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/noah/.sdkman"
-[[ -s "/Users/noah/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/noah/.sdkman/bin/sdkman-init.sh"
