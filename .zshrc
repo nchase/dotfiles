@@ -1,34 +1,47 @@
-ZSH=$HOME/.oh-my-zsh
-
-ZSH_THEME="noah"
+# set up EDITOR and TERM:
 EDITOR=vim
+TERM=xterm-256color
 SHELL=/bin/zsh
 
-DISABLE_AUTO_UPDATE="true"
+# assuming we have powerline installed, include that config. this path may need to change:
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# configure gg, my favorite alias for grep in git repositories:
+alias gg='git grep --ignore-case --line-number'
 
-COMPLETION_WAITING_DOTS="true"
+# set up history configuration:
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=10000
+setopt share_history
+setopt hist_ignore_dups
+setopt appendhistory
+# we want history to be dump and pipeable, not a bounded window into the
+# entirety of the history. (we have other tools for that):
+alias history='fc -l 0'
 
+# use bash-style word selection:
+autoload -U select-word-style
+select-word-style bash
+# (allows alt+delete to delete to reasonable boundaries, like slashes.
+#  by default zsh is very liberal in what it considers word boundaries.)
 
+# add fzf defaults:
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git npm)
-source $ZSH/oh-my-zsh.sh
-# Disable hostname completion
-zstyle ':completion:*' hosts off
-# disable git completion attempts. hellishly slow:
-compdef -d git
+# nvm:
 
-__git_files () {
-  _wanted files expl 'local files' _files
-}
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-autoload compinit; compinit
+# ---
 
-source $HOME/.environment-etc
-source $HOME/.environment-npm-completion
+# Lines configured by zsh-newuser-install
+bindkey -e
 
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/noah/.zshrc'
+
+autoload -Uz compinit
+compinit
