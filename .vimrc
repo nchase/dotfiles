@@ -1,126 +1,186 @@
-" this should be at the beginning of any good vimrc file.
-" google it or see here: http://www.linuxfromscratch.org/blfs/view/5.1/postlfs/vimrc.html
+" disable vi-compatibility mode (allows real vim configuration):
 set nocompatible
 
-set exrc " enable per-directory .vimrc files
-
+" inject pathogen plugins (from ~/.vim/bundle):
 call pathogen#infect()
 
-" general settings
-syntax enable
+function! ConfigureUI()
+  "enable syntax highlighting:
+  syntax enable
+  " load plugins and indents for filetypes:
+  filetype plugin indent on
 
-set background=dark
-colorscheme solarized
-set ruler                          " always show ruler
+  "use solarized and which flavor (light/dark to use):
+  colorscheme solarized
+  set background=dark
 
-set number                         " add line numbers
+  " always show ruler:
+  set ruler
+  " always show line numbers
+  set number
 
-" undo/swapfile stuff:
-set noswapfile
-set hidden
-set undofile
-set undodir=~/.vim/undodir
+  " airline stuff:
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme='solarized'
+  set laststatus=2
 
-filetype plugin indent on          " default to filetype-specific plugins and indentations
-set ignorecase                     " ignore case on search
-set autoindent                     " add indentation
-set listchars=tab:→\ ,trail:•      " set trailing space and tab characters
-set list                           " actually show listchars.
-
-  " variable formatting stuff
-    set tabstop=2                      " tab = 2 spaces
-    set shiftwidth=2                   " treat 2 spaces as a tab
-    set expandtab                      " convert all tabs to spaces
-    set showmatch                      " display when a contextualizing symbol has a match
-    set wildmode=longest,list,full
-    set wildmenu
-    set hidden
-
-" Add LESS filetype recognition
-au BufNewFile,BufRead *.less set filetype=less
-" Add JSON filetype recognition using JS syntax highlighting
-au BufNewFile,BufRead *.json set ft=javascript
-" puppet uses Ruby syntax highlighting:
-au BufNewFile,BufRead *.pp set filetype=ruby
-
-au BufNewFile,BufRead *.cshtml set filetype=html
-
-set incsearch
-set hlsearch
-nnoremap <CR> :noh<CR><CR>
-
-" never display, e.g., any node_modules directory:
-set wildignore+=*/**/node_modules
-set wildignore+=*.class
-set wildignore+=*/target/*
-set wildignore+=*.ico,*.jpg,*.gif,*.png
-
-" alter cursor shape for different modes in terminal vim (may not work in
-" Terminal.app)
-if exists('$TMUX')
-  " also make this work for tmux:
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
-set backspace=indent,eol,start
-
-" manually change to working directory
-map <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" airline stuff:
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-set laststatus=2
-
-" ctrlp:
-let g:ctrlp_match_window = 'order:ttb'
-let g:ctrlp_switch_buffer = 't'
-
-" turn-on distraction free writing mode for markdown files
-  if has("gui_running")
-    " au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
-    set background=light
-  end
-
-  function! DistractionFreeWriting()
-      colorscheme iawriter
-      set background=light
-      set gfn=Cousine:h14                " font to use
-      set lines=40 columns=100           " size of the editable area
-      set fuoptions=background:#00f5f6f6 " macvim specific setting for editor's background color
-      set guioptions-=r                  " remove right scrollbar
-      set laststatus=0                   " don't show status line
-      set fullscreen                     " go to fullscreen editing mode
-      set linebreak                      " break the lines on words
-      set nolist                         " don't show unprintable characters (kills linebreak)
-      normal zR                          " unfold all folds
-  endfunction
-
-if filereadable(glob('./.vimrc.local'))
-  source ./.vimrc.local
-endif
-filetype plugin indent on
-syntax on
-
-" handle `:W` as `:w` and `:E` as `:e`:
-cnoreabbrev W w
-cnoreabbrev E e
-cnoreabbrev Qa qa
-
-" set the font for MacVim:
-set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline
+  "allow mouse support for stuff like resizing panes (neovim):
+  set mouse=a
 
 
-set conceallevel=1
-let g:javascript_enable_domhtmlcss = 1
-"let g:javascript_conceal_function  = "ƒ"
-set clipboard=unnamed
+  " default to filetype-specific plugins and indentations:
+  filetype plugin indent on
+  " ignore case on search:
+  set ignorecase
+  " auto-indent files:
+  set autoindent
+  " show non-printing characters
+  set list
+  " configure tabs and trailing spaces:
+  set listchars=tab:→\ ,trail:•
 
-" default to tree liststyle for netrw:
-let g:netrw_liststyle=3
+  " tabs take up the same space as 2 spaces:
+  set tabstop=2
 
-set nojoinspaces
+  " treat 2 spaces as a tab:
+  set shiftwidth=2
+  " use spaces, not tabs:
+  set expandtab
+  " display when a contextualizing symbol has a match
+  set showmatch
+  " wildcard matching:
+  set wildmode=longest,list,full
+  set wildmenu
+  " hide abandoned buffers (e.g. unsaved changes in buffers)
+  " without forcing the user to save:
+  set hidden
+
+  " allow backspacing over indents, linebreaks,
+  " and start position of insert mode:
+  set backspace=indent,eol,start
+endfunction
+call ConfigureUI()
+
+function! ConfigureKeys()
+  " manually change to working directory with <leader>cd:
+  map <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+  " handle `:W` as `:w` and `:E` as `:e`
+  " (i.e. set up fatfinger aliases):
+  cnoreabbrev W w
+  cnoreabbrev E e
+  cnoreabbrev Q q
+  cnoreabbrev Qa qa
+
+  " use system clipboard:
+  set clipboard^=unnamed,unnamedplus
+
+  " when joining selected text (<C-j>), collapse spaces:
+  set nojoinspaces
+endfunction
+call ConfigureKeys()
+
+
+function! ConfigureUndoRedo()
+  set noswapfile
+  set hidden
+  set undofile
+  set undodir=~/.vim/undodir
+endfunction
+call ConfigureUndoRedo()
+
+function! ConfigureFileTypes()
+  autocmd BufNewFile,BufRead *.less set filetype=less
+  autocmd BufNewFile,BufRead *.json set filetype=javascript
+  autocmd BufNewFile,BufRead *.pp set filetype=ruby
+  autocmd BufNewFile,BufRead *.cshtml set filetype=html
+endfunction
+call ConfigureFileTypes()
+
+function! ConfigureSearch()
+  " highlight search results immediately as matches appear
+  set incsearch
+  " highlight all search matches, not just the current match:
+  set hlsearch
+  " turn off search highlighting after user submits carriage return:
+  nnoremap <CR> :noh<CR><CR>
+endfunction
+call ConfigureSearch()
+
+function! ConfigureIgnoreDirectories()
+  " never display, e.g., any node_modules directory:
+  set wildignore+=*/**/node_modules
+  set wildignore+=*.class
+  set wildignore+=*/target/*
+  set wildignore+=*.ico,*.jpg,*.gif,*.png
+endfunction
+call ConfigureIgnoreDirectories()
+
+
+function! ConfigureTmux()
+  " alter cursor shape for different modes in terminal vim (may not work in
+  " Terminal.app)
+  if exists('$TMUX')
+    " also make this work for tmux:
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+endfunction
+call ConfigureTmux()
+
+
+function! ConfigureFZF()
+  " fuzzy finder:
+  set rtp+=/usr/local/opt/fzf
+
+  " open fzf with ctrl+p
+  map <C-p> :FZF<CR>
+  " open fzf buffers with ctrl+alt+p:
+  map <C-M-p> :Buffers<CR>
+endfunction
+call ConfigureFZF()
+
+
+function! ConfigureAle()
+  " configure JS to fix files with prettier and eslint:
+  let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+  " never agressively lint, always wait for a save:
+  let g:ale_lint_on_text_changed = 'never'
+  " fix files when they're saved:
+  let g:ale_fix_on_save = 1
+  " allow autocompletion:
+  let g:ale_completion_enabled = 1
+  " populate loclist with errors in addition to inline display:
+  let g:ale_open_list = 1
+  " show 5 lines in that loclist:
+  let g:ale_list_window_size = 5
+  " wait 500ms for autocomplete:
+  let g:ale_completion_delay = 500
+
+  " <C-] goes to definition:
+  nnoremap <buffer> <C-]> :ALEGoToDefinition<CR>
+endfunction
+call ConfigureAle()
+
+function! ConfigureExtensibility()
+  " enable per-directory .vimrc files
+  set exrc
+  if filereadable(glob('./.vimrc.local'))
+    source ./.vimrc.local
+  endif
+endfunction
+call ConfigureExtensibility()
+
+
+function! PostConfigGenerateHelpTags()
+  " add plugins to runtime path; necessary to generate helptags for plugins:
+  packloadall
+  " silently load helptags (ignore messages and errors. we just want the
+  " helptags gen'd:
+  silent! helptags ALL
+endfunction
+call PostConfigGenerateHelpTags()
