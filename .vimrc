@@ -73,6 +73,7 @@ function! ConfigureKeys()
   cnoreabbrev E e
   cnoreabbrev Q q
   cnoreabbrev Qa qa
+  cnoreabbrev explore Explore
 
   " use system clipboard:
   set clipboard^=unnamed,unnamedplus
