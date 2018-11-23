@@ -13,6 +13,7 @@ function! ConfigureUI()
   "use solarized and which flavor (light/dark to use):
   colorscheme solarized
   set background=dark
+  highlight clear SignColumn
 
   " always show ruler:
   set ruler
@@ -144,8 +145,12 @@ call ConfigureFZF()
 
 
 function! ConfigureAle()
+  let g:ale_sign_error = '❗️'
+  let g:ale_sign_warning = '⚠️'
+  let g:ale_sign_column_always = 1
   " configure JS to fix files with prettier and eslint:
   let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+  let g:ale_fixers['json'] = ['fixjson']
   " never agressively lint, always wait for a save:
   let g:ale_lint_on_text_changed = 'never'
   " fix files when they're saved:
