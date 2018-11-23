@@ -91,8 +91,6 @@ endfunction
 call ConfigureUndoRedo()
 
 function! ConfigureFileTypes()
-  autocmd BufNewFile,BufRead *.less set filetype=less
-  autocmd BufNewFile,BufRead *.json set filetype=javascript
   autocmd BufNewFile,BufRead *.pp set filetype=ruby
   autocmd BufNewFile,BufRead *.cshtml set filetype=html
 endfunction
