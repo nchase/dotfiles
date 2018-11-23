@@ -6,19 +6,12 @@ SHELL=/bin/zsh
 # assuming we have powerline installed, include that config. this path may need to change:
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
-# configure gg, my favorite alias for grep in git repositories:
-alias gg='git grep --ignore-case --line-number'
+# aliases:
+source ~/.shell-aliases
 
-# set up history configuration:
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=10000
-setopt share_history
-setopt hist_ignore_dups
-setopt appendhistory
-# we want history to be dump and pipeable, not a bounded window into the
-# entirety of the history. (we have other tools for that):
-alias history='fc -l 0'
+# history configuration:
+source ~/.shell-history
+
 
 # use bash-style word selection:
 autoload -U select-word-style
@@ -45,3 +38,10 @@ zstyle :compinstall filename '/Users/noah/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+# rebuilt autocompletion lookup table without having to restart:
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# add additional/machine-specific configuration:
+source ~/.etcrc
