@@ -25,6 +25,12 @@ function! ConfigureUI()
   let g:airline_powerline_fonts = 1
   let g:airline_theme='solarized'
   set laststatus=2
+  " in the rare case that we're in a gui vim (e.g. MacVim),
+  " set an appropriate font. this allows powerline/airline
+  " to render special characters:
+  if has("gui_running")
+    set guifont=Inconsolata-g\ for\ Powerline
+  endif
 
   "allow mouse support for stuff like resizing panes (neovim):
   set mouse=a
