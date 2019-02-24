@@ -83,6 +83,7 @@ function! ConfigureKeys()
   cnoreabbrev Q q
   cnoreabbrev Qa qa
   cnoreabbrev explore Explore
+  cnoreabbrev Redraw redraw
 
   " use system clipboard:
   set clipboard^=unnamed,unnamedplus
