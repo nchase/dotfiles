@@ -156,8 +156,6 @@ call ConfigureFZF()
 
 
 function! ConfigureAle()
-  let g:ale_sign_error = '❗️'
-  let g:ale_sign_warning = '⚠️'
   let g:ale_sign_column_always = 1
   " configure JS to fix files with prettier and eslint:
   let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
