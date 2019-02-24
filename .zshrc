@@ -47,6 +47,7 @@ zstyle ':completion:*' rehash true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # add important directories to PATH:
+export PATH=./node_modules/.bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 
 # add additional/machine-specific configuration:
