@@ -20,6 +20,9 @@ function! ConfigureUI()
   " always show line numbers
   set number
 
+  " make vim look for UI updates more frequently:
+  set updatetime=100
+
   " airline stuff:
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_powerline_fonts = 1
