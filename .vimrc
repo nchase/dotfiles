@@ -157,6 +157,7 @@ call ConfigureFZF()
 
 function! ConfigureAle()
   let g:ale_sign_column_always = 1
+  let g:airline#extensions#ale#enabled = 1
   " configure JS to fix files with prettier and eslint:
   let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
   let g:ale_fixers['json'] = ['fixjson']
