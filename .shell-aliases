@@ -1,7 +1,4 @@
 #!/bin/sh
 
-# nvim -> vim
-alias vim='nvim'
-
 # configure gg, my favorite alias for grep in git repositories:
 alias gg='git --no-pager grep --ignore-case --line-number'
