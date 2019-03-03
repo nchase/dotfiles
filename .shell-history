@@ -2,11 +2,13 @@
 
 # set up history configuration:
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt share_history
 setopt hist_ignore_dups
+setopt hist_expire_dups_first
+setopt hist_ignore_space
 setopt appendhistory
 # we want history to be dump and pipeable, not a bounded window into the
 # entirety of the history. (we have other tools for that):
-alias history='fc -l 0'
+alias history='history -E 0'
