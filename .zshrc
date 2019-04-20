@@ -12,6 +12,7 @@ source ~/.shell-aliases
 # history configuration:
 source ~/.shell-history
 
+alias vim="nvim"
 
 # use bash-style word selection:
 autoload -U select-word-style
