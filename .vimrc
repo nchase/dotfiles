@@ -164,10 +164,6 @@ function! ConfigureAle()
   let g:ale_lint_delay = 100
   " fix files when they're saved:
   let g:ale_fix_on_save = 1
-  " allow autocompletion:
-  let g:ale_completion_enabled = 1
-  " populate loclist with errors in addition to inline display:
-  let g:ale_open_list = 1
   " show 5 lines in that loclist:
   let g:ale_list_window_size = 5
   " wait 500ms for autocomplete:
