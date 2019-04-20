@@ -36,7 +36,6 @@ export GOPATH=~/.go
 # ---
 
 # Lines configured by zsh-newuser-install
-bindkey -e
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/Users/noah/.zshrc'
