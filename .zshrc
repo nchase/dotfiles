@@ -22,6 +22,8 @@ select-word-style bash
 
 # add fzf defaults:
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# ignore git directory, follow symbolic links:
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # nvm:
 
