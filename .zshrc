@@ -51,6 +51,15 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 export PATH=./node_modules/.bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 
-# add additional/machine-specific configuration:
+# override git commit hook installed via package manager:
+function git {
+  if [[ "$1" == "commit" && "$@" != *"--help"* ]]; then
+    shift 1
+    command git commitnoverify "$@"
+  else
+    command git "$@"
+  fi
+}
 
+# add additional/machine-specific configuration:
 source ~/.etcrc
