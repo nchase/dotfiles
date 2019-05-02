@@ -161,6 +161,7 @@ function! ConfigureAle()
   " configure JS to fix files with prettier and eslint:
   let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
   let g:ale_fixers['json'] = ['fixjson']
+  let g:ale_fixers['swift'] = ['swiftformat']
   let g:ale_lint_delay = 100
   " fix files when they're saved:
   let g:ale_fix_on_save = 1
