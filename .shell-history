@@ -7,6 +7,7 @@ SAVEHIST=100000
 setopt share_history
 setopt hist_ignore_dups
 setopt hist_expire_dups_first
+# entries prepended with a space don't get stored in history:
 setopt hist_ignore_space
 setopt appendhistory
 # we want history to be dump and pipeable, not a bounded window into the
