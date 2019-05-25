@@ -69,6 +69,9 @@ function! ConfigureUI()
   " allow backspacing over indents, linebreaks,
   " and start position of insert mode:
   set backspace=indent,eol,start
+
+  " autocompletion doesn't insert stuff, just shows it:
+  " set completeopt+=noinsert
 endfunction
 call ConfigureUI()
 
@@ -167,8 +170,13 @@ function! ConfigureAle()
   let g:ale_fix_on_save = 1
   " show 5 lines in that loclist:
   let g:ale_list_window_size = 5
+  " enable autocomplete:
+  let g:ale_completion_enabled = 1
   " wait 500ms for autocomplete:
-  let g:ale_completion_delay = 500
+  "let g:ale_completion_delay = 200
+
+  " disable ts linting for now:
+  let g:ale_linters_ignore = ['tsserver']
 
   " <C-] goes to definition:
   nnoremap <buffer> <C-]> :ALEGoToDefinition<CR>
