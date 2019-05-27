@@ -71,7 +71,7 @@ function! ConfigureUI()
   set backspace=indent,eol,start
 
   " autocompletion doesn't insert stuff, just shows it:
-  " set completeopt+=noinsert
+  set completeopt+=noinsert
 endfunction
 call ConfigureUI()
 
