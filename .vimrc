@@ -183,13 +183,11 @@ function! ConfigureAle()
   " wait 500ms for autocomplete:
   "let g:ale_completion_delay = 200
 
-  " disable ts linting for now:
-  let g:ale_linters_ignore = ['tsserver']
 
   " <C-]> goes to definition:
   nnoremap <C-]> :ALEGoToDefinition<CR>
   " <C-[> finds usages:
-  nnoremap <C-[> :ALEFindReferences<CR>
+  " nnoremap <C-[> :ALEFindReferences<CR>
 endfunction
 call ConfigureAle()
 
