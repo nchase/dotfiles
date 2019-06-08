@@ -179,7 +179,7 @@ function! ConfigureAle()
   " show 5 lines in that loclist:
   let g:ale_list_window_size = 5
   " enable autocomplete:
-  let g:ale_completion_enabled = 1
+  " let g:ale_completion_enabled = 1
   " wait 500ms for autocomplete:
   "let g:ale_completion_delay = 200
 
