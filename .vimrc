@@ -1,6 +1,10 @@
 " disable vi-compatibility mode (allows real vim configuration):
 set nocompatible
 
+" currently modeline is susceptible to remote code execution
+" (https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md):
+set nomodeline
+
 " inject pathogen plugins (from ~/.vim/bundle):
 call pathogen#infect()
 
