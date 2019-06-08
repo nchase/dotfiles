@@ -165,6 +165,8 @@ function! ConfigureAle()
   let g:airline#extensions#ale#enabled = 1
   " configure JS to fix files with prettier and eslint:
   let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+  let g:ale_fixers['typescript'] = ['prettier', 'eslint']
+  let g:ale_fixers['flow'] = ['prettier', 'eslint']
   let g:ale_fixers['json'] = ['fixjson']
   let g:ale_fixers['swift'] = ['swiftformat']
   let g:ale_lint_delay = 100
