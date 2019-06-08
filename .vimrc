@@ -72,6 +72,8 @@ function! ConfigureUI()
 
   " autocompletion doesn't insert stuff, just shows it:
   set completeopt+=noinsert
+
+  let g:goyo_width = '100%'
 endfunction
 call ConfigureUI()
 
