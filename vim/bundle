@@ -1,7 +1,14 @@
 ale
+coc.nvim
 fzf.vim
+swift.vim
+typescript-vim
 vim-airline
 vim-airline-themes
 vim-colors-solarized
 vim-fugitive
+vim-gitgutter
+vim-graphql
+vim-rhubarb
+vim-surround
 vim-tmux-navigator
