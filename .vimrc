@@ -78,6 +78,8 @@ function! ConfigureUI()
   set completeopt+=noinsert
 
   let g:goyo_width = '100%'
+
+  inoremap <silent><expr> <c-space> coc#refresh()
 endfunction
 call ConfigureUI()
 
