@@ -49,6 +49,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # add important directories to PATH:
 export PATH=./node_modules/.bin:$PATH
+export PATH=../node_modules/.bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 
 # override git commit hook installed via package manager:
