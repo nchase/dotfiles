@@ -2,3 +2,5 @@
 
 # configure gg, my favorite alias for grep in git repositories:
 alias gg='git --no-pager grep --ignore-case --line-number'
+
+alias printjson='pbpaste | jq -C . | less -R'
