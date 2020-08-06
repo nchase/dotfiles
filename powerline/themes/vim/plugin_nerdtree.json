@@ -1,10 +1,9 @@
 {
+	"default_module": "powerline.segments.vim.plugin.nerdtree",
 	"segments": {
 		"left": [
 			{
-				"type": "string",
-				"contents": "Command Line",
-				"highlight_groups": ["file_name"]
+				"function": "nerdtree"
 			},
 			{
 				"type": "string",
