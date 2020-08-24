@@ -6,6 +6,9 @@ SHELL=/bin/zsh
 # add powerline to path. why wasn't this necessary on the old box 🙃
 PATH=$PATH:$HOME/Library/Python/2.7/bin
 
+# add python 3.8 as well. because python
+PATH=$PATH:$HOME/Library/Python/3.8/bin
+
 # assuming we have powerline installed, include that config. this path may need to change:
 #source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 source ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
