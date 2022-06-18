@@ -54,6 +54,8 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 export PATH=./node_modules/.bin:$PATH
 export PATH=../node_modules/.bin:$PATH
 export PATH=$GOPATH/bin:$PATH
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
 
 
 # add additional/machine-specific configuration:
