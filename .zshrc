@@ -60,3 +60,5 @@ export PATH="/opt/homebrew/sbin:$PATH"
 
 # add additional/machine-specific configuration:
 source ~/.etcrc
+
+alias stree="open -a SourceTree ."
