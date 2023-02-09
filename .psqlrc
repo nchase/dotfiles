@@ -1,2 +1,6 @@
-\pset pager off
-\x auto
+\pset pager always
+\setenv PAGER 'less --chop-long-lines'
+\pset null '[null]'
+\set HISTSIZE 20000
+\x off
+\timing
