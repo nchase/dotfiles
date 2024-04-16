@@ -1,6 +1,21 @@
 #!/bin/sh
 
-# configure gg, my favorite alias for grep in git repositories:
-alias gg='git --no-pager grep --ignore-case --line-number'
+# configure `gg`, a function that wraps git-grep
+# for powerful and simple command-line search in git repositories:
+gg() {
+  git --no-pager \
+  grep \
+  --ignore-case \
+  --line-number \
+  "$1" \
+  -- \
+  ':(exclude)**/*/__generated__/*' ':(exclude)*.generated.*' ':(exclude)schema.json'
+  # on one line, the command looks something like this: `git --no-pager grep --ignore-case --line-number "$1" -- ':(exclude)**/*/__generated__/*' ':(exclude)*.generated.*' ':(exclude)schema.json'`
+}
+# for more information, see documentation on git-grep[1], and see the glossary definitions for pathspec[2] and exclude[3].
+#
+# [1]: https://git-scm.com/docs/git-grep
+# [2]: https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
+# [3]: https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-exclude
 
 alias printjson='pbpaste | jq -C . | less -R'
