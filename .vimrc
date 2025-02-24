@@ -1,3 +1,10 @@
+" go read ~/.config/nvim/init.vim
+
+
+
+
+
+
 " disable vi-compatibility mode (allows real vim configuration):
 set nocompatible
 
