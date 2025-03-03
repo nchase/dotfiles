@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.opt.relativenumber = false -- Relative line numbers
+vim.g.snacks_animate = false
