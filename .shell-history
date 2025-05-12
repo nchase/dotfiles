@@ -2,8 +2,10 @@
 
 # ~/.histfile is where history entries will live:
 HISTFILE=~/.histfile
-HISTSIZE=100000
+# store 100,000 history entries on disk:
 SAVEHIST=100000
+# load 100,000 history entries into memory:
+HISTSIZE=100000
 # share history between all sessions:
 setopt share_history
 # don't save back-to-back duplicates:
@@ -12,6 +14,6 @@ setopt hist_ignore_dups
 setopt hist_expire_dups_first
 # entries prepended with a space don't get stored in history:
 setopt hist_ignore_space
-# we want history to be dump and pipeable, not a bounded window into the
+# we want `history` to be dump and pipeable, not a bounded window into the
 # entirety of the history. (we have other tools for that):
 alias history='history -E 0'
