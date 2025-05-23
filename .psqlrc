@@ -1,6 +1,18 @@
+-- always use the pager, so that things behave the same every time:
 \pset pager always
+
+-- more consistency. I think it's bad to wrap lines in sql output, I'd rather tap the right arrow to get to the next screen:
 \setenv PAGER 'less --chop-long-lines'
+
+-- show nulls as _something_ instead of a blank space
+-- (you could use a fun emoji like 🚫 here, if so inclined)
 \pset null '[null]'
+
+-- give ourselves a nice lengthy history:
 \set HISTSIZE 20000
+
+-- psql's expanded table formatting is weird. let's explicitly disable it. no surprises!
 \x off
+
+-- print the duration of queries after they finish. it's always good to know how long things take!
 \timing
