@@ -1,9 +1,20 @@
+[language-server]
+biome = { command = "biome", args = ["lsp-proxy"] }
+
+
  [[language]]
     name = "typescript"
     auto-format = true
-    formatter = { command = "prettier", args = ["--parser", "typescript"] }
+    language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
+
 
  [[language]]
     name = "tsx"
     auto-format = true
-    formatter = { command = "prettier", args = ["--parser", "typescript"] }
+    language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
+
+
+
+ [[language]]
+    name = "json"
+    language-servers = [ { name = "vscode-json-language-server", except-features = [ "format" ] }, "biome" ]
